@@ -1,2 +1,2 @@
-# JA_Training
+# JS_Training
 Learning JS from zero
