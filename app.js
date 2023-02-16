@@ -20,8 +20,6 @@ const targetPrice = Number(prompt('Сколько стоит товар?'));
 
 function getCredit(age, hasJob) 
 {
-	if(availableMoney >= targetPrice) return 0;
-	
 	switch(true)
 	{
 		case age > 24 && hasJob:
@@ -33,10 +31,16 @@ function getCredit(age, hasJob)
 	}
 }
 
-const finalAmount = availableMoney + getCredit(age, hasJob);
+const calculateMoney = (age, job, money, price) => 
+{
+	if(money >= price)
+	{
+		return money;
+	}
 
-const canAfford = finalAmount >= targetPrice;
+	return money + getCredit(age, job);
+}
 
-const message = canBuy => canBuy ? 'Вы можете купить товар' : 'Вы не можете купить товар';
+const message = canAfford => canAfford ? "Вы можете купить товар" : "Вы не можете купить товар";
 
-console.log(message(canAfford));
+console.log(message(calculateMoney(age, hasJob, availableMoney, targetPrice)));
