@@ -20,6 +20,8 @@ const targetPrice = Number(prompt('Сколько стоит товар?'));
 
 function getCredit(age, hasJob) 
 {
+	if(availableMoney >= targetPrice) return 0;
+	
 	switch(true)
 	{
 		case age > 24 && hasJob:
