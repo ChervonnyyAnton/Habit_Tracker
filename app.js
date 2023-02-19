@@ -1,41 +1,43 @@
 /*
-	Дан список задач
-	Сделать функции:
-		- добавить задачу в конец
-		- удаление задачи по названию
-		- перенос задачи в начало списка по названию
-
-	Всегда меняем исходный массив
+	Дан произвольный url
+    https://purpleschool.ru/course/javascript'
+    Нужно сделать финкиию, которая выводит в консоль:
+    Протокол (https)
+    Доменное имя (purpleschool.ru)
+    Путь внутри сайта (/course/javascript)
 */
 
-const tasks = ["task 1"];
+const url = "https://purpleschool.ru/course/javascript";
 
-// Добавить задачу в конец
-function Add(task) {
-  tasks.push(task);
-}
-// Удалить задачу по названию
-function Delete(task) {
-	if(!tasks.includes(task)) return console.log('Такой задачи нет');
-  const index = tasks.indexOf(task);
-  tasks.splice(index, 1);
-}
-// Перенести задачу в начало по названию
-function Prioritize(task) {
-	if (!tasks.includes(task)) return console.log("Такой задачи нет");
-  const index = tasks.indexOf(task);
-  const taskToMove = tasks.splice(index, 1);
-  tasks.unshift(taskToMove[0]);
+function parseUrl(url) {
+	if (typeof url !== "string") {
+		throw new Error("Url must be a string");
+	}
+	
+	if(!url.includes("://")) {
+		throw new Error("Url must contain protocol");
+	}
+
+	const firstBatch = url.split("://");
+	const protocol = firstBatch[0];
+
+	if(!protocol.includes("s")) {
+		console.log("Url must be secure");
+	}
+
+	const secondBatch = firstBatch[1].split("/");
+    const domain = secondBatch[0];
+
+	if(!domain.includes(".")) {
+		throw new Error("Url must contain domain");
+	}
+
+	if(!firstBatch[1].includes("/")) {
+		throw new Error("Url must contain path");
+	}
+
+	const path = "/" + secondBatch.slice(1).join("/");
+	return { protocol, domain, path };
 }
 
-console.log(tasks);
-Add("task 2");
-console.log(tasks);
-Delete("task 1");
-console.log(tasks);
-Delete("false task")
-console.log(tasks);
-Prioritize("task 2");
-console.log(tasks);
-Prioritize("false task")
-console.log(tasks);
+console.log(parseUrl(url));
