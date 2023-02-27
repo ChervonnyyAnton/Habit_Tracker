@@ -1,18 +1,20 @@
 /*
-  Имеется массив изменения цен prices, где внутри
-  элемент массива является ценои в момент X,
-  2й - ценой в момент Y. Нужно преобразовать данные в массив, где будут отображены
-  только положительные изменения цен: [100, 150]
+  Найти среднее в массиве используя только reduce
 */
 
-const prices = [
-  [100, 200],
-  [120, 100],
-  [200, 350],
-];
+const arr = [1, 4, 4, 10];
 
-const positivePrices = prices
-  .map(product => product[1] - product[0])
-  .filter(price => price > 0);
+const avg = arr.reduce((prev, curr) => prev += curr) / arr.length; 
 
-console.log(positivePrices);
+console.log(avg);
+
+const avg1 = arr.reduce((acc, curr, index) => {
+  if(index != arr.length -1){
+    return acc += curr;
+  }
+  else {
+    return (acc + curr) / arr.length;
+  }
+});
+
+console.log(avg1);
