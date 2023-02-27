@@ -1,20 +1,14 @@
 /*
-  Найти среднее в массиве используя только reduce
+  функция, которая возвращает true, если элемент есть в массиве и 
+  false, если элемент не найден.
 */
 
-const arr = [1, 4, 4, 10];
+const arr = [1, 4, 4, 5, 10];
+const exp = 5;
 
-const avg = arr.reduce((prev, curr) => prev += curr) / arr.length; 
+function some (array, value) {
+  return array.findIndex(el => el === value) >= 0;
+}
 
-console.log(avg);
-
-const avg1 = arr.reduce((acc, curr, index) => {
-  if(index != arr.length -1){
-    return acc += curr;
-  }
-  else {
-    return (acc + curr) / arr.length;
-  }
-});
-
-console.log(avg1);
+console.log(some(arr, exp));
+console.log(arr.some(el => el === exp));
