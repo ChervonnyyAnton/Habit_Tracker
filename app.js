@@ -1,34 +1,26 @@
 /*
-  дополнить объект методами для
-  получения названия компании,
-  ceo и сотрудника
+  дана функци сброса пароля. Нужно создать пользователя,
+  которому можно передать функцию.
 */
 
-const company = {
-  name: 'ООО Агро',
-  employees: [
-    {
-      name: 'Света',
-      getName: function(){
-        return this.name;
-      }
-    }
-  ],
-  ceo: {
-    name: 'Вася',
-    getName: function(){
-      return this.name;
-    }
-  },
-
-  getName: function(){
-    return this.name;
-  },
-  getEmployees: function(){
-    return this.employees.map(el => el.getName());
+function removePassword(reset){
+  if(reset){
+    this.password = undefined;
   }
-}
+  else{
+    this.password = 'admin'
+  }
+};
 
-console.log(company.getName());
-console.log(company.ceo.getName());
-console.log(company.getEmployees());
+const user = {
+  username: 'Ivan',
+  password: '12345'
+};
+
+console.log(user.password);
+
+const resetUserPassword = removePassword.bind(user, true);
+
+resetUserPassword();
+
+console.log(user.password);
