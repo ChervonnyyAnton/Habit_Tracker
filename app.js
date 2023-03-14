@@ -1,26 +1,35 @@
 /*
-  дана функци сброса пароля. Нужно создать пользователя,
-  которому можно передать функцию.
+  создать blueprint пользователя, используя образ которого можно увеличивать
+  баланс его счета на число и увеличивать число операций на 1.
 */
 
-function removePassword(reset){
-  if(reset){
-    this.password = undefined;
+const userInfo = {
+  balance: 0,
+  operations: 0,
+  increase(sum) {
+    this.balance += sum,
+    this.operations++
   }
-  else{
-    this.password = 'admin'
+}
+
+function newUser(){
+  const newUser = {
+    balance: 0,
+    operations: 0,
+    increase(sum) {
+      this.balance += sum,
+      this.operations++;
+    },
+  };
+  return function(){
+    return newUser;
   }
-};
+}
 
-const user = {
-  username: 'Ivan',
-  password: '12345'
-};
+const user1 = newUser();
+user1().increase(100);
+user1().increase(-50);
+user1().increase(500);
 
-console.log(user.password);
-
-const resetUserPassword = removePassword.bind(user, true);
-
-resetUserPassword();
-
-console.log(user.password);
+console.log(user1().balance);
+console.log(user1().operations);
