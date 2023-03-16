@@ -11,13 +11,14 @@ function onChange(e){
 function submit() {
 	const input = document.querySelector(".input").value;
     if (!input) {
-      document
-        .querySelector(".notification")
-        .classList.remove("notification_active");
+		document
+			.querySelector(".notification")
+			.setAttribute("class", "notification");
 		return;
     }
 
     document.querySelector(".panel").innerText = input;
     document.querySelector(".input").value = null;
 	document.querySelector(".notification").classList.add('notification_active');
+	
 }
