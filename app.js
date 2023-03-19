@@ -18,10 +18,7 @@ function submit() {
     }
 }
 
-const panelText = 'панель';
-const panelClass = 'button';
-const newElement = document.createElement('div');
-newElement.setAttribute('user-id', 1);
-newElement.classList.add('panel');
-newElement.innerHTML = `<button class="${panelClass}">${panelText}</button>`
-document.querySelector('.test').appendChild(newElement);
+localStorage.setItem('token', 'elgjdldgm');
+console.log(localStorage.getItem('token'));
+localStorage.removeItem('token');
+localStorage.clear();
