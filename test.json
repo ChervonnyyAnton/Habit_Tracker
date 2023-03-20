@@ -1,9 +1,0 @@
-{
-	"key": "value",
-	"num": 5,
-	"bool": false,
-	"arr": ["a", "b"],
-	"obj": {
-		"innerKey": "value"
-	}
-}

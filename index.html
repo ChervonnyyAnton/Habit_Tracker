@@ -4,20 +4,35 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="/styles.css"
+	<title>Habit App</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/styles/main.css"
 </head>
-<body style="color: white; background-color: #1c1b21; text-align: center;">
-	<img src="./public_small.png" alt="logo">
-	<div class="panel">I love this</div>
-	<input class="input" onkeydown="onChange(event)"/>
-	<button class="button" onclick="submit()">Change</button>
-	<div class="notification">Changed!</div>
-	<div class="log">
+<body>
+	<div class="app">
 		<div class="panel">
-			<span>Recently added</span>
+			<img class="logo" src="/images/logo.svg" alt="logo">
+			<nav class="menu">
+				<div class="menu__list">
+					<button class="menu__item menu__item_active">
+						<img src="./images/gym_icon.svg" alt="gym button">
+					</button>
+					<button class="menu__item">
+						<img src="./images/water_icon.svg" alt="water button">
+					</button>
+					<button class="menu__item">
+						<img src="./images/food_icon.svg" alt="food button">
+					</button>
+				</div>
+				<button class="menu__add">
+					<img src="./images/add_icon.svg" alt="add button">
+				</button>
+			</nav>
 		</div>
+		<div class="content">Content</div>
 	</div>
-	<script src="./app.js"></script>
+	<script src="./scripts/app.js"></script>
 </body>
 </html>
