@@ -1,33 +1,22 @@
-'use strict'
-localStorage.clear();
+'use strict';
 
-function addLog() {
-  const data = localStorage.getItem("lastInput");
-  const lastInput = JSON.parse(data);
-  const newElement = document.createElement("div");
-  newElement.innerHTML = `<div>${lastInput.text}</div>`;
-  document.querySelector(".log").appendChild(newElement);
-}
+let habits = [];
+const HABIT_KEY = 'HABIT_KEY';
 
-function onChange(e){
-	if(e.code != 'Enter'){
-		return;
+/* utils */
+
+function loadData() {
+	const habitsFromLocalStorage = localStorage.getItem(HABIT_KEY);
+	const habitsParsed = JSON.parse(habitsFromLocalStorage);
+	if(Array.isArray(habits)){
+		habits = habitsParsed;
 	}
-
-	submit();
 }
 
-function submit() {
-	const input = document.querySelector(".input").value;
-
-    if (!input) {
-		document
-			.querySelector(".notification")
-			.setAttribute("class", "notification");
-		return;
-    }
-
-	const jsonString = JSON.stringify({ text: input });
-    localStorage.setItem("lastInput", jsonString);
-    addLog();
+function saveData(){
+	localStorage.setItem(HABIT_KEY, JSON.stringify(habits));
 }
+
+(() => {
+	loadData();
+})();
