@@ -1,38 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Habit App</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/styles/main.css"
-</head>
-<body>
-	<div class="app">
-		<div class="panel">
-			<img class="logo" src="/images/logo.svg" alt="logo">
-			<nav class="menu">
-				<div class="menu__list">
-					<button class="menu__item menu__item_active">
-						<img src="./images/gym_icon.svg" alt="gym button">
-					</button>
-					<button class="menu__item">
-						<img src="./images/water_icon.svg" alt="water button">
-					</button>
-					<button class="menu__item">
-						<img src="./images/food_icon.svg" alt="food button">
-					</button>
-				</div>
-				<button class="menu__add">
-					<img src="./images/add_icon.svg" alt="add button">
-				</button>
-			</nav>
-		</div>
-		<div class="content">Content</div>
-	</div>
-	<script src="./scripts/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/main.css"
+  </head>
+  <body>
+    <div class="app">
+      <div class="panel">
+        <img class="logo" src="/images/logo.svg" alt="logo" />
+        <nav class="menu">
+          <div class="menu__list">
+            <button class="menu__item menu__item_active">
+              <img src="./images/gym_icon.svg" alt="gym button" />
+            </button>
+            <button class="menu__item">
+              <img src="./images/water_icon.svg" alt="water button" />
+            </button>
+            <button class="menu__item">
+              <img src="./images/food_icon.svg" alt="food button" />
+            </button>
+          </div>
+          <button class="menu__add">
+            <img src="./images/add_icon.svg" alt="add button" />
+          </button>
+        </nav>
+      </div>
+      <div class="content">
+        <header>
+          <h1>Pushups</h1>
+          <div class="progress">
+            <div class="progress__text">
+              <div class="progress__name">progress</div>
+              <div class="progress__percent">80%</div>
+            </div>
+            <div class="progress__bar">
+              <div class="progress__cover-bar"></div>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div>
+            <div class="habit">
+              <div class="habit__day">Day 1</div>
+              <div class="habit__comment">Comment</div>
+              <button class="habit__delete">
+                <img src="./images/delete_icon.svg" alt="delete habit button" />
+              </button>
+            </div>
+          </div>
+          <div class="habit">
+            <div class="habit__day">Day 2</div>
+            <form class="habit__form">
+				      <input class="input_icon" type="text" placeholder="comment out" />
+				      <img class="input__icon" src="./images/comment_icon.svg" alt="comment icon" />
+				      <button class="button">Add</button>
+			      </form>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="./scripts/app.js"></script>
+  </body>
 </html>
