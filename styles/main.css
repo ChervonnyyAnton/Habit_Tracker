@@ -57,7 +57,8 @@ body {
 }
 
 .menu__item_active {
-	background: #5051F9;
+	border: solid;
+	border-color: #6A6AFB;
 }
 
 .menu__item_active:hover img {
