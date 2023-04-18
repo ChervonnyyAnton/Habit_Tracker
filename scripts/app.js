@@ -6,16 +6,21 @@ const HABIT_KEY = 'HABIT_KEY';
 /* page */
 
 const page = {
-	menu: document.querySelector('.menu__list')
-}
+  menu: document.querySelector(".menu__list"),
+  header: {
+    habitName: document.querySelector(".habit__name"),
+    progressPercentage: document.querySelector(".progress__percent"),
+    progressCoverBar: document.querySelector(".progress__cover-bar"),
+  }
+};
 
 /* utils */
 
 function loadData() {
-	const habitsFromLocalStorage = localStorage.getItem(HABIT_KEY);
-	const habitsParsed = JSON.parse(habitsFromLocalStorage);
-	if(Array.isArray(habitsParsed)){
-		habits = habitsParsed;
+	const habitsString = localStorage.getItem(HABIT_KEY);
+	const habitArray = JSON.parse(habitsString);
+	if(Array.isArray(habitArray)){
+		habits = habitArray;
 	}
 }
 
@@ -44,6 +49,7 @@ function reRenderMenu(activeHabit) {
           	}
 
 			page.menu.appendChild(element);
+
 			continue;
 		}
 
@@ -56,9 +62,23 @@ function reRenderMenu(activeHabit) {
 	}
 }
 
+function reRenderHead(activeHabit) {
+	if (!activeHabit) {
+		return;
+    }
+
+	page.header.habitName.innerText = activeHabit.name;
+	const result = activeHabit.days.length / activeHabit.target;
+	const progress = result > 1 ? 100 : result * 100;
+
+	page.header.progressPercentage.innerText = progress.toFixed(0) + "%";
+	page.header.progressCoverBar.setAttribute('style', `width: ${progress}%`);
+}
+
 function reRender (activeHabitId) {
 	const activeHabit = habits.find(habit => habit.id === activeHabitId);
 	reRenderMenu(activeHabit);
+	reRenderHead(activeHabit);
 }
 
 /* init */
