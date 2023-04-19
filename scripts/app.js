@@ -11,7 +11,11 @@ const page = {
     habitName: document.querySelector(".habit__name"),
     progressPercentage: document.querySelector(".progress__percent"),
     progressCoverBar: document.querySelector(".progress__cover-bar"),
-  }
+  },
+  content: {
+    daysContainer: document.getElementById("days"),
+    nextDay: document.querySelector(".habit__day")
+  },
 };
 
 /* utils */
@@ -30,11 +34,7 @@ function saveData(){
 
 /* render */
 
-function reRenderMenu(activeHabit) {
-	if (!activeHabit) {
-		return;
-	}
-	
+function reRenderMenu(activeHabit) {	
 	for(const habit of habits) {
 		const existed = document.querySelector(`[menu-habit-id="${habit.id}"]`);
 		if(!existed){
@@ -63,10 +63,6 @@ function reRenderMenu(activeHabit) {
 }
 
 function reRenderHead(activeHabit) {
-	if (!activeHabit) {
-		return;
-    }
-
 	page.header.habitName.innerText = activeHabit.name;
 	const result = activeHabit.days.length / activeHabit.target;
 	const progress = result > 1 ? 100 : result * 100;
@@ -75,10 +71,33 @@ function reRenderHead(activeHabit) {
 	page.header.progressCoverBar.setAttribute('style', `width: ${progress}%`);
 }
 
+function reRenderContent(activeHabit){
+	page.content.daysContainer.innerHTML = '';
+	for (const index in activeHabit.days){
+		const element = document.createElement('div');
+		element.classList.add('habit');
+		element.innerHTML = `
+				<div class="habit">
+					<div class="habit__day">Day ${Number(index) + 1}</div>
+					<div class="habit__comment">${activeHabit.days[index].comment}</div>
+					<button class="habit__delete">
+						<img src="./images/delete_icon.svg" alt="delete Day ${index + 1}" />
+					</button>
+            	</div>`;
+		page.content.daysContainer.appendChild(element);
+	}
+	page.content.nextDay.innerHTML = `Day ${activeHabit.days.length + 1}`;
+}
+
 function reRender (activeHabitId) {
+
 	const activeHabit = habits.find(habit => habit.id === activeHabitId);
+	if (!activeHabit) {
+      	return;
+    }
 	reRenderMenu(activeHabit);
 	reRenderHead(activeHabit);
+	reRenderContent(activeHabit);
 }
 
 /* init */
