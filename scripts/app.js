@@ -100,10 +100,17 @@ function reRender (activeHabitId) {
 	reRenderContent(activeHabit);
 }
 
+/* work with days */
+function addDays(event){
+	event.preventDefault();
+	const data = new FormData(event.target);
+	const comment = data.get('comment');
+	console.log(comment);
+}
+
 /* init */
 
 (() => {
 	loadData();
 	reRender(habits[0].id);
 })();
-

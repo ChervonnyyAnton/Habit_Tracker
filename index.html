@@ -41,10 +41,10 @@
           <div id="days"></div>
           <div class="habit">
             <div class="habit__day">Day _</div>
-            <form class="habit__form">
-				      <input class="input_icon" type="text" placeholder="comment out" />
+            <form class="habit__form" onsubmit="addDays(event)">
+				      <input name="comment" class="input_icon" type="text" placeholder="comment out" />
 				      <img class="input__icon" src="./images/comment_icon.svg" alt="comment icon" />
-				      <button class="button">Add</button>
+				      <button class="button" type="submit">Add</button>
 			      </form>
           </div>
         </main>
