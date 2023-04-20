@@ -2,6 +2,7 @@
 
 let habits = [];
 const HABIT_KEY = 'HABIT_KEY';
+let globalActiveHabitId;
 
 /* page */
 
@@ -77,20 +78,18 @@ function reRenderContent(activeHabit){
 		const element = document.createElement('div');
 		element.classList.add('habit');
 		element.innerHTML = `
-				<div class="habit">
 					<div class="habit__day">Day ${Number(index) + 1}</div>
 					<div class="habit__comment">${activeHabit.days[index].comment}</div>
-					<button class="habit__delete">
+					<button class="habit__delete" onclick="deleteDay(${index})">
 						<img src="./images/delete_icon.svg" alt="delete Day ${index + 1}" />
-					</button>
-            	</div>`;
+					</button>`;
 		page.content.daysContainer.appendChild(element);
 	}
 	page.content.nextDay.innerHTML = `Day ${activeHabit.days.length + 1}`;
 }
 
 function reRender (activeHabitId) {
-
+	globalActiveHabitId = activeHabitId;
 	const activeHabit = habits.find(habit => habit.id === activeHabitId);
 	if (!activeHabit) {
       	return;
@@ -102,10 +101,42 @@ function reRender (activeHabitId) {
 
 /* work with days */
 function addDays(event){
+	const form = event.target;
 	event.preventDefault();
-	const data = new FormData(event.target);
+	const data = new FormData(form);
 	const comment = data.get('comment');
-	console.log(comment);
+	form['comment'].classList.remove('error');
+	if(!comment){
+		form['comment'].classList.add('error');
+	}
+
+	habits = habits.map(habit => {
+		if(habit.id === globalActiveHabitId) {
+			return {
+				...habit,
+				days: habit.days.concat([{comment}])
+			}
+		}
+		return habit;
+	});
+	form['comment'].value = '';
+	reRender(globalActiveHabitId);
+	saveData();
+}
+
+function deleteDay(index){
+	habits = habits.map(habit => {
+		if(habit.id === globalActiveHabitId) {
+			habit.days.splice(index, 1);
+			return {
+				...habit,
+				days: habit.days
+			};
+		}
+		return habit;
+	});
+	reRender(globalActiveHabitId);
+	saveData();
 }
 
 /* init */
