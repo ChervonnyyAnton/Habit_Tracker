@@ -1,0 +1,27 @@
+[
+	{
+		"id": 1,
+		"icon": "gym_icon",
+		"name": "Pushups",
+		"target": 10,
+		"days": [
+			{
+				"comment": "first time in gym!"
+			},
+			{
+				"comment": "second day is easier"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"icon": "food_icon",
+		"name": "healthy food",
+		"target": 10,
+		"days": [
+			{
+				"comment": "Avocado is top!!"
+			}
+		]
+	}
+]
