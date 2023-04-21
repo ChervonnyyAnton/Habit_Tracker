@@ -2,25 +2,25 @@
 	{
 		"id": 1,
 		"icon": "gym_icon",
-		"name": "Отжимания",
+		"name": "Pushups",
 		"target": 10,
 		"days": [
 			{
-				"comment": "Первый подход всегда даётся тяжело"
+				"comment": "first time in gym!"
 			},
 			{
-				"comment": "Второй - уже проще"
+				"comment": "second day is easier"
 			}
 		]
 	},
 	{
 		"id": 2,
 		"icon": "food_icon",
-		"name": "Правильное питание",
+		"name": "healthy food",
 		"target": 10,
 		"days": [
 			{
-				"comment": "Авокадо - это вкусно!"
+				"comment": "Avocado is top!!"
 			}
 		]
 	}
