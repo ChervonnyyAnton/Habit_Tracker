@@ -7,15 +7,18 @@ let globalActiveHabitId;
 /* page */
 
 const page = {
-  menu: document.querySelector(".menu__list"),
+  menu: document.querySelector('.menu__list'),
   header: {
-    habitName: document.querySelector(".habit__name"),
-    progressPercentage: document.querySelector(".progress__percent"),
-    progressCoverBar: document.querySelector(".progress__cover-bar"),
+    habitName: document.querySelector('.habit__name'),
+    progressPercentage: document.querySelector('.progress__percent'),
+    progressCoverBar: document.querySelector('.progress__cover-bar'),
   },
   content: {
-    daysContainer: document.getElementById("days"),
-    nextDay: document.querySelector(".habit__day")
+    daysContainer: document.getElementById('days'),
+    nextDay: document.querySelector('.habit__day'),
+  },
+  popup: {
+    index: document.getElementById('add-habit-popup')
   },
 };
 
@@ -31,6 +34,14 @@ function loadData() {
 
 function saveData(){
 	localStorage.setItem(HABIT_KEY, JSON.stringify(habits));
+}
+
+function togglePopup() {
+	if (page.popup.index.classList.contains('cover_hidden')) {
+    	page.popup.index.classList.remove('cover_hidden');
+  } else {
+    	page.popup.index.classList.add('cover_hidden');
+  }
 }
 
 /* render */
